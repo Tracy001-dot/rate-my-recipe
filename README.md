@@ -39,12 +39,3 @@ If you want to run the project on your own computer, please, follow this steps
 
 
 
-
-
-
-
-
-5. 
-
-
-
