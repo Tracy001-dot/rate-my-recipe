@@ -5,7 +5,10 @@ Rate my recipe is a recipe recommendation project i built using python and Strea
 
 Instead of ranking using only average ratings, i also considered how many reviews each recipe has. I used the Bayasian average method to make the ranking more balanced and reliable.
 
-**live demo**: (https://rate-my-recipe-by-tracy.streamlit.app/)
+I used Bayesian Average Rating because **Plain Average** Only divides rating points by review count, so a **2 review 5.0** can tie or beat a **192 review** dish due to small sample bias.
+**Bayesian Average** Weighs both rating and review count pulling low-review items toward the overall average so proven recipes stay on top. 
+  
+**live demo:**  (https://rate-my-recipe-by-tracy.streamlit.app/)
 
 FEATURES
 * Recipe Search : users can search for recipe by entering words such as chicken or chocolate.
