@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import altair as alt
 
 st.title("Recipe Insights & Analytics")
 
@@ -24,6 +25,16 @@ st.divider()
 st.subheader("Top 10 Recipes by Bayesian rating")
 if "bayesian_rating" in df.columns and "name" in df.columns:
     top_recipes = df.sort_values(by="bayesian_rating", ascending=False).head(10)
-    st.bar_chart(top_recipes.set_index("name")["bayesian_rating"])
+    chart = (
+        alt.Chart(top_recipes)
+        .mark_bar()
+        .encode(
+            x=alt.X("name:N", sort="-y", title="Recipe"),
+            y=alt.Y("bayesian_rating:Q", title="Bayesian Rating"),
+            tooltip=["name", "bayesian_rating", "review_count"],
+        )
+    )
+    st.altair_chart(chart, use_container_width=True)
 else:
     st.info("Bayesian rating data available in search view.")
+    
