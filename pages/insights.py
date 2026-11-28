@@ -24,12 +24,13 @@ st.divider()
 # Chart 1: Top Rated Recipes
 st.subheader("Top 10 Recipes by Bayesian rating")
 if "bayesian_rating" in df.columns and "name" in df.columns:
-    top_recipes = df.sort_values(by="bayesian_rating", ascending=False).head(10)
+  top_recipes = df.sort_values(by="bayesian_rating", ascending=False).head(10)
+    ordered_names = top_recipes["name"].tolist()
     chart = (
         alt.Chart(top_recipes)
         .mark_bar()
         .encode(
-            x=alt.X("name:N", sort="-y", title="Recipe"),
+            x=alt.X("name:N", sort=ordered_names, title="Recipe"),
             y=alt.Y("bayesian_rating:Q", title="Bayesian Rating"),
             tooltip=["name", "bayesian_rating", "review_count"],
         )
