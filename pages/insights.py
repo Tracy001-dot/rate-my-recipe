@@ -24,7 +24,7 @@ st.divider()
 # Chart 1: Top Rated Recipes
 st.subheader("Top 10 Recipes by Bayesian rating")
 if "bayesian_rating" in df.columns and "name" in df.columns:
-  top_recipes = df.sort_values(by="bayesian_rating", ascending=False).head(10)
+    top_recipes = df.sort_values(by="bayesian_rating", ascending=False).head(10)
     ordered_names = top_recipes["name"].tolist()
     chart = (
         alt.Chart(top_recipes)
@@ -38,4 +38,3 @@ if "bayesian_rating" in df.columns and "name" in df.columns:
     st.altair_chart(chart, use_container_width=True)
 else:
     st.info("Bayesian rating data available in search view.")
-    
